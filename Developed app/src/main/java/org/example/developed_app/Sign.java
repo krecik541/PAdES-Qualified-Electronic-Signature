@@ -97,8 +97,8 @@ public class Sign {
 
         System.out.println(signatureSection);
 
-        System.out.println("✅ Podpisany PDF zapisano jako: " + signedPath.getFileName());
-        System.out.println("🔒 Hash (Base64): " + hashBase64);
+        System.out.println("Podpisany PDF zapisano jako: " + signedPath.getFileName());
+        System.out.println("Hash (Base64): " + hashBase64);
     }
 
     public boolean isPendriveRecognized() {
