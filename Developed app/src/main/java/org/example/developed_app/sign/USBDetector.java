@@ -1,4 +1,4 @@
-package org.example.developed_app;
+package org.example.developed_app.sign;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,14 +6,15 @@ import java.nio.file.FileStore;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import javafx.application.Platform;
+import org.example.developed_app.HelloController;
 
 import static java.lang.Thread.sleep;
 import static org.example.developed_app.HelloController.signed;
 
 public class USBDetector implements Runnable {
 
-    protected Sign sign;
-    protected HelloController controller;
+    public Sign sign;
+    public HelloController controller;
 
     @Override
     public void run() {

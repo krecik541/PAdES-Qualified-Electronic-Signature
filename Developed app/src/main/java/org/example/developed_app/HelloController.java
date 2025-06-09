@@ -4,24 +4,20 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
-import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.example.developed_app.sign.Sign;
+import org.example.developed_app.sign.USBDetector;
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.FileStore;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Locale;
 
 import static java.lang.Thread.sleep;
 
 public class HelloController {
     private static final String DESKTOP = Paths.get(System.getProperty("user.home"), "Desktop").toString();
 
-    static boolean signed;
+    public static boolean signed;
 
     private Sign sign = new Sign();
     private Verify verify = new Verify();

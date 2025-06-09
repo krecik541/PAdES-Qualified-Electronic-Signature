@@ -1,34 +1,50 @@
-package org.example.developed_app;
+package org.example.developed_app.sign;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.text.PDFTextStripper;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
+import java.io.File;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.security.KeyFactory;
 import java.security.MessageDigest;
 import java.security.PrivateKey;
 import java.security.Signature;
 import java.security.spec.PKCS8EncodedKeySpec;
-import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.Base64;
 import java.util.stream.Collectors;
 
-
+/*!
+ * \class Sign
+ * \brief Klasa odpowiedzialna za podpisywanie dokumentów PDF przy użyciu szyfrowanego klucza prywatnego.
+ */
 public class Sign {
+
+    /// Flaga wskazująca, czy pendrive został rozpoznany.
     private boolean isPendriveRecognized;
+
+    /// PIN użytkownika do odszyfrowania klucza.
     private String pin = "";
+
+    /// Ścieżka do dokumentu PDF.
     private String documentPath = "";
+
+    /// Ścieżka do pliku z kluczem prywatnym.
     private String keyPath = "";
 
+    /*!
+     * \brief Inicjalizuje proces podpisywania dokumentu PDF.
+     *
+     * Ładuje klucz prywatny z pliku (zaszyfrowany), odszyfrowuje go za pomocą PIN-u,
+     * oblicza hash dokumentu PDF, podpisuje hash i zapisuje podpis w metadanych PDF.
+     *
+     * \throws Exception w przypadku błędu odszyfrowania, podpisywania lub zapisu PDF.
+     */
     public void init() throws Exception {
         String base64 = Files.lines(Paths.get(keyPath))
                 .filter(line -> !line.contains("BEGIN") && !line.contains("END"))
@@ -49,82 +65,98 @@ public class Sign {
         KeyFactory kf = KeyFactory.getInstance("RSA");
         PrivateKey privateKey = kf.generatePrivate(keySpec);
 
-//        System.out.println("\nKlucz prywatny (Base64):");
-//        System.out.println(Base64.getEncoder().encodeToString(kf.generatePrivate(keySpec).getEncoded()));
-
         Path originalPath = Paths.get(documentPath);
         String fileName = originalPath.getFileName().toString().replace(".pdf", "");
         Path signedPath = originalPath.resolveSibling(fileName + "_signed.pdf");
 
         PDDocument document = PDDocument.load(originalPath.toFile());
 
-        PDPage lastPage = document.getPage(document.getNumberOfPages() - 1);
-
-        byte[] originalPdfBytes = Files.readAllBytes(originalPath);
-        byte[] hash = sha.digest(originalPdfBytes);
-        String hashBase64 = Base64.getEncoder().encodeToString(hash);
-
-        try (PDPageContentStream contentStream = new PDPageContentStream(document, lastPage, PDPageContentStream.AppendMode.APPEND, true)) {
-            contentStream.beginText();
-            contentStream.setFont(PDType1Font.HELVETICA_BOLD, 10);
-            contentStream.newLineAtOffset(50, 50);
-            String displayText = "Signed (PIN *****) on " + LocalDate.now();
-            contentStream.showText(displayText);
-            contentStream.newLineAtOffset(0, -14); // nowa linia
-            contentStream.showText("Document hash (SHA-256):");
-            contentStream.newLineAtOffset(0, -14);
-            contentStream.showText(hashBase64.substring(0, Math.min(hashBase64.length(), 64)));
-            if (hashBase64.length() > 64) {
-                contentStream.newLineAtOffset(0, -14);
-                contentStream.showText(hashBase64.substring(64));
-            }
-            contentStream.endText();
-        }
-
-        document.save(signedPath.toFile());
-        document.close();
+        PDFTextStripper stripper = new PDFTextStripper();
+        String extractedText = stripper.getText(document);
+        byte[] hash = sha.digest(extractedText.getBytes(StandardCharsets.UTF_8));
 
         Signature signature = Signature.getInstance("SHA256withRSA");
         signature.initSign(privateKey);
         signature.update(hash);
         byte[] digitalSignature = signature.sign();
+        String signatureHex = bytesToHex(digitalSignature);
 
-        String signatureSection = "\n---BEGIN SIGNATURE---\n"
-                + Base64.getEncoder().encodeToString(digitalSignature)
-                + "\n---END SIGNATURE---\n";
+        document.getDocumentInformation().setCustomMetadataValue("Signature", signatureHex);
 
-        Files.write(signedPath, signatureSection.getBytes(StandardCharsets.UTF_8), StandardOpenOption.APPEND);
-
-        System.out.println(signatureSection);
+        document.save(signedPath.toFile());
+        document.close();
 
         System.out.println("Podpisany PDF zapisano jako: " + signedPath.getFileName());
-        System.out.println("Hash (Base64): " + hashBase64);
+        System.out.println("Podpis (hex): " + signatureHex);
     }
 
+    /*!
+     * \brief Konwertuje tablicę bajtów do postaci szesnastkowej.
+     * \param bytes Tablica bajtów.
+     * \return Ciąg znaków w formacie hex.
+     */
+    private static String bytesToHex(byte[] bytes) {
+        StringBuilder hexString = new StringBuilder();
+        for (byte b : bytes) {
+            String hex = Integer.toHexString(0xff & b);
+            if (hex.length() == 1) hexString.append('0');
+            hexString.append(hex);
+        }
+        return hexString.toString();
+    }
+
+    /*!
+     * \brief Sprawdza, czy pendrive został rozpoznany.
+     * \return true jeśli tak, false w przeciwnym razie.
+     */
     public boolean isPendriveRecognized() {
         return isPendriveRecognized;
     }
 
+    /*!
+     * \brief Ustawia status rozpoznania pendrive'a.
+     * \param b Flaga rozpoznania.
+     */
     public void setPendriveRecognized(boolean b) {
         this.isPendriveRecognized = b;
     }
 
+    /*!
+     * \brief Zwraca ścieżkę do dokumentu PDF.
+     * \return Ścieżka dokumentu.
+     */
     public String getDocumentPath() {
         return documentPath;
     }
 
+    /*!
+     * \brief Ustawia ścieżkę do dokumentu PDF.
+     * \param documentPath Ścieżka dokumentu.
+     */
     public void setDocumentPath(String documentPath) {
         this.documentPath = documentPath;
     }
 
+    /*!
+     * \brief Ustawia PIN użytkownika.
+     * \param pin PIN jako ciąg znaków.
+     */
     public void setPin(String pin) {
         this.pin = pin;
     }
 
+    /*!
+     * \brief Zwraca ścieżkę do pliku z kluczem prywatnym.
+     * \return Ścieżka do klucza.
+     */
     public String getKeyPath() {
         return keyPath;
     }
 
+    /*!
+     * @brief Ustawia ścieżkę do pliku z kluczem prywatnym.
+     * @param keyPath Ścieżka do klucza.
+     */
     public void setKeyPath(String keyPath) {
         this.keyPath = keyPath;
     }

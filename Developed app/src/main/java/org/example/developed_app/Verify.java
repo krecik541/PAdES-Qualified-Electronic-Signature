@@ -1,7 +1,9 @@
 package org.example.developed_app;
 
-import java.io.BufferedReader;
-import java.io.IOException;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDDocumentInformation;
+import org.apache.pdfbox.text.PDFTextStripper;
+
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -12,7 +14,6 @@ import java.security.PublicKey;
 import java.security.Signature;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class Verify {
@@ -23,34 +24,29 @@ public class Verify {
         Path pdfPath = Paths.get(documentPath);
         Path keyFilePath = Paths.get(keyPath);
 
-        byte[] allBytes = Files.readAllBytes(pdfPath);
-        String fileContent = new String(allBytes, StandardCharsets.UTF_8);
+        // 1. Wczytaj PDF i odczytaj podpis z metadanych
+        PDDocument document = PDDocument.load(pdfPath.toFile());
+        PDDocumentInformation info = document.getDocumentInformation();
+        String signatureHex = info.getCustomMetadataValue("Signature");
 
-        String beginMarker = "---BEGIN SIGNATURE---";
-        String endMarker = "---END SIGNATURE---";
-
-        int beginIndex = fileContent.indexOf(beginMarker);
-        int endIndex = fileContent.indexOf(endMarker);
-
-        if (beginIndex == -1 || endIndex == -1 || beginIndex >= endIndex) {
-            System.out.println("Nie znaleziono podpisu w pliku.");
+        if (signatureHex == null || signatureHex.isEmpty()) {
+            System.out.println("Nie znaleziono podpisu w metadanych PDF.");
+            document.close(); // zamykamy wcześniej, bo dalej nie potrzebny
             return;
         }
 
-        int base64Start = beginIndex + beginMarker.length();
-        String base64Signature = fileContent.substring(base64Start, endIndex).replaceAll("\\s", "");
-        byte[] digitalSignature = Base64.getDecoder().decode(base64Signature);
+        byte[] digitalSignature = hexToBytes(signatureHex);
 
-        String signatureSection = "\n---BEGIN SIGNATURE---\n"
-                + Base64.getEncoder().encodeToString(digitalSignature)
-                + "\n---END SIGNATURE---\n";
-        System.out.println(signatureSection);
-
-        byte[] unsignedPdfBytes = fileContent.substring(0, beginIndex).getBytes(StandardCharsets.UTF_8);
-
+        // 2. Oblicz hash tekstu PDF
         MessageDigest sha256 = MessageDigest.getInstance("SHA-256");
-        byte[] calculatedHash = sha256.digest(unsignedPdfBytes);
+        PDFTextStripper stripper = new PDFTextStripper();
+        String extractedText = stripper.getText(document);
 
+        byte[] calculatedHash = sha256.digest(extractedText.getBytes(StandardCharsets.UTF_8));
+
+        document.close();  // teraz zamykamy bezpiecznie
+
+        // 3. Wczytaj klucz publiczny
         String publicKeyPem = Files.lines(keyFilePath)
                 .filter(line -> !line.contains("BEGIN") && !line.contains("END"))
                 .collect(Collectors.joining());
@@ -60,18 +56,29 @@ public class Verify {
         KeyFactory kf = KeyFactory.getInstance("RSA");
         PublicKey publicKey = kf.generatePublic(keySpec);
 
+        // 4. Weryfikacja podpisu
         Signature signature = Signature.getInstance("SHA256withRSA");
         signature.initVerify(publicKey);
         signature.update(calculatedHash);
         boolean isValid = signature.verify(digitalSignature);
 
         if (isValid) {
-            System.out.println("Podpis jest prawidłowy i zgodny z dokumentem.");
+            System.out.println("✅ Podpis jest prawidłowy i zgodny z dokumentem.");
         } else {
-            System.out.println("Podpis jest nieprawidłowy lub dokument został zmodyfikowany.");
+            System.out.println("❌ Podpis jest nieprawidłowy lub dokument został zmodyfikowany.");
         }
     }
 
+
+    private static byte[] hexToBytes(String hex) {
+        int len = hex.length();
+        byte[] result = new byte[len / 2];
+        for (int i = 0; i < len; i += 2) {
+            result[i / 2] = (byte) ((Character.digit(hex.charAt(i), 16) << 4)
+                    + Character.digit(hex.charAt(i + 1), 16));
+        }
+        return result;
+    }
 
     public void setDocumentPath(String documentPath) {
         this.documentPath = documentPath;
