@@ -10,10 +10,22 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.nio.file.Paths;
 
+/**
+ * GUI controller for the RSA key generation application.
+ * Allows the user to input a password (PIN) for encrypting the private key
+ * and select a directory where the keys will be saved.
+ */
 public class HelloController {
-    // Path to save
+    /**
+     * Default path to the directory where the keys will be saved.
+     * By default, this is the user's desktop.
+     */
     private String pathToSave = Paths.get(System.getProperty("user.home"), "Desktop").toString();
 
+
+    /**
+     * Stage for the directory chooser dialog.
+     */
     static Stage stage;
 
     @FXML
@@ -28,6 +40,12 @@ public class HelloController {
     @FXML
     private Button selectButton;
 
+    /**
+     * Handles the "Generate" button click event.
+     * Creates an instance of `KeyGenerator` and generates RSA keys.
+     *
+     * @throws Exception If an error occurs during key generation.
+     */
     @FXML
     protected void onGenerateButtonClick() throws Exception {
         KeyGenerator keyGenerator = new KeyGenerator(passwordField.getText(), pathToSave);
@@ -37,11 +55,19 @@ public class HelloController {
         welcomeText.setText("RSA key has been generated!");
     }
 
+    /**
+     * Handles text changes in the password field.
+     * Enables or disables the "Generate" button based on whether the password field is empty.
+     */
     @FXML
     protected void onTextChanged() {
         generateButton.setDisable(passwordField.getText().isEmpty());
     }
 
+    /**
+     * Handles the "Select Directory" button click event.
+     * Opens a directory chooser dialog to allow the user to select a directory for saving keys.
+     */
     @FXML
     protected void onSelectButtonClick() {
         String desktop = Paths.get(System.getProperty("user.home"), "Desktop").toString();

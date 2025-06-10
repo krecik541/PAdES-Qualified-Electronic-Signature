@@ -1,0 +1,97 @@
+\doxysection{org.\+example.\+auxiliaryapilcationgui.\+Hello\+Controller Class Reference}
+\hypertarget{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_hello_controller}{}\label{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_hello_controller}\index{org.example.auxiliaryapilcationgui.HelloController@{org.example.auxiliaryapilcationgui.HelloController}}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_hello_controller_a6f7dc40d2a5de5f2c63ef1962347ad9e}{on\+Generate\+Button\+Click}} ()  throws Exception 
+\item 
+void \mbox{\hyperlink{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_hello_controller_a117b5b04119da73d89e96874b67ec1a4}{on\+Text\+Changed}} ()
+\item 
+void \mbox{\hyperlink{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_hello_controller_af2e6717e2b7412754fda5bd91e99ee77}{on\+Select\+Button\+Click}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+String \mbox{\hyperlink{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_hello_controller_a335a87a59ccd260c4ad86ef614730610}{path\+To\+Save}} = Paths.\+get(System.\+get\+Property("{}user.\+home"{}), "{}Desktop"{}).to\+String()
+\item 
+Label \mbox{\hyperlink{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_hello_controller_a1e803368e5189e791cdd73ba965e9cbb}{welcome\+Text}}
+\item 
+Password\+Field \mbox{\hyperlink{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_hello_controller_a4182d1c285dd146c51c9db85a7edc261}{password\+Field}}
+\item 
+Button \mbox{\hyperlink{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_hello_controller_a0c4d00dc8e6cffdde5bfdd5b7b686506}{generate\+Button}}
+\item 
+Button \mbox{\hyperlink{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_hello_controller_a8e9a4927175ac898676b84639a45f34e}{select\+Button}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+GUI controller for the RSA key generation application. Allows the user to input a password (PIN) for encrypting the private key and select a directory where the keys will be saved. 
+
+\label{doc-func-members}
+\Hypertarget{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_hello_controller_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_hello_controller_a6f7dc40d2a5de5f2c63ef1962347ad9e}\index{org.example.auxiliaryapilcationgui.HelloController@{org.example.auxiliaryapilcationgui.HelloController}!onGenerateButtonClick@{onGenerateButtonClick}}
+\index{onGenerateButtonClick@{onGenerateButtonClick}!org.example.auxiliaryapilcationgui.HelloController@{org.example.auxiliaryapilcationgui.HelloController}}
+\doxysubsubsection{\texorpdfstring{onGenerateButtonClick()}{onGenerateButtonClick()}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_hello_controller_a6f7dc40d2a5de5f2c63ef1962347ad9e} 
+void org.\+example.\+auxiliaryapilcationgui.\+Hello\+Controller.\+on\+Generate\+Button\+Click (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) throws Exception\hspace{0.3cm}{\ttfamily [protected]}}
+
+Handles the "{}\+Generate"{} button click event. Creates an instance of {\ttfamily \doxylink{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_key_generator}{Key\+Generator}} and generates RSA keys.
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & If an error occurs during key generation. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_hello_controller_af2e6717e2b7412754fda5bd91e99ee77}\index{org.example.auxiliaryapilcationgui.HelloController@{org.example.auxiliaryapilcationgui.HelloController}!onSelectButtonClick@{onSelectButtonClick}}
+\index{onSelectButtonClick@{onSelectButtonClick}!org.example.auxiliaryapilcationgui.HelloController@{org.example.auxiliaryapilcationgui.HelloController}}
+\doxysubsubsection{\texorpdfstring{onSelectButtonClick()}{onSelectButtonClick()}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_hello_controller_af2e6717e2b7412754fda5bd91e99ee77} 
+void org.\+example.\+auxiliaryapilcationgui.\+Hello\+Controller.\+on\+Select\+Button\+Click (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Handles the "{}\+Select Directory"{} button click event. Opens a directory chooser dialog to allow the user to select a directory for saving keys. \Hypertarget{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_hello_controller_a117b5b04119da73d89e96874b67ec1a4}\index{org.example.auxiliaryapilcationgui.HelloController@{org.example.auxiliaryapilcationgui.HelloController}!onTextChanged@{onTextChanged}}
+\index{onTextChanged@{onTextChanged}!org.example.auxiliaryapilcationgui.HelloController@{org.example.auxiliaryapilcationgui.HelloController}}
+\doxysubsubsection{\texorpdfstring{onTextChanged()}{onTextChanged()}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_hello_controller_a117b5b04119da73d89e96874b67ec1a4} 
+void org.\+example.\+auxiliaryapilcationgui.\+Hello\+Controller.\+on\+Text\+Changed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Handles text changes in the password field. Enables or disables the "{}\+Generate"{} button based on whether the password field is empty. 
+
+\label{doc-variable-members}
+\Hypertarget{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_hello_controller_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_hello_controller_a0c4d00dc8e6cffdde5bfdd5b7b686506}\index{org.example.auxiliaryapilcationgui.HelloController@{org.example.auxiliaryapilcationgui.HelloController}!generateButton@{generateButton}}
+\index{generateButton@{generateButton}!org.example.auxiliaryapilcationgui.HelloController@{org.example.auxiliaryapilcationgui.HelloController}}
+\doxysubsubsection{\texorpdfstring{generateButton}{generateButton}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_hello_controller_a0c4d00dc8e6cffdde5bfdd5b7b686506} 
+Button org.\+example.\+auxiliaryapilcationgui.\+Hello\+Controller.\+generate\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_hello_controller_a4182d1c285dd146c51c9db85a7edc261}\index{org.example.auxiliaryapilcationgui.HelloController@{org.example.auxiliaryapilcationgui.HelloController}!passwordField@{passwordField}}
+\index{passwordField@{passwordField}!org.example.auxiliaryapilcationgui.HelloController@{org.example.auxiliaryapilcationgui.HelloController}}
+\doxysubsubsection{\texorpdfstring{passwordField}{passwordField}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_hello_controller_a4182d1c285dd146c51c9db85a7edc261} 
+Password\+Field org.\+example.\+auxiliaryapilcationgui.\+Hello\+Controller.\+password\+Field\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_hello_controller_a335a87a59ccd260c4ad86ef614730610}\index{org.example.auxiliaryapilcationgui.HelloController@{org.example.auxiliaryapilcationgui.HelloController}!pathToSave@{pathToSave}}
+\index{pathToSave@{pathToSave}!org.example.auxiliaryapilcationgui.HelloController@{org.example.auxiliaryapilcationgui.HelloController}}
+\doxysubsubsection{\texorpdfstring{pathToSave}{pathToSave}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_hello_controller_a335a87a59ccd260c4ad86ef614730610} 
+String org.\+example.\+auxiliaryapilcationgui.\+Hello\+Controller.\+path\+To\+Save = Paths.\+get(System.\+get\+Property("{}user.\+home"{}), "{}Desktop"{}).to\+String()\hspace{0.3cm}{\ttfamily [private]}}
+
+Default path to the directory where the keys will be saved. By default, this is the user\textquotesingle{}s desktop. \Hypertarget{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_hello_controller_a8e9a4927175ac898676b84639a45f34e}\index{org.example.auxiliaryapilcationgui.HelloController@{org.example.auxiliaryapilcationgui.HelloController}!selectButton@{selectButton}}
+\index{selectButton@{selectButton}!org.example.auxiliaryapilcationgui.HelloController@{org.example.auxiliaryapilcationgui.HelloController}}
+\doxysubsubsection{\texorpdfstring{selectButton}{selectButton}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_hello_controller_a8e9a4927175ac898676b84639a45f34e} 
+Button org.\+example.\+auxiliaryapilcationgui.\+Hello\+Controller.\+select\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_hello_controller_a1e803368e5189e791cdd73ba965e9cbb}\index{org.example.auxiliaryapilcationgui.HelloController@{org.example.auxiliaryapilcationgui.HelloController}!welcomeText@{welcomeText}}
+\index{welcomeText@{welcomeText}!org.example.auxiliaryapilcationgui.HelloController@{org.example.auxiliaryapilcationgui.HelloController}}
+\doxysubsubsection{\texorpdfstring{welcomeText}{welcomeText}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_hello_controller_a1e803368e5189e791cdd73ba965e9cbb} 
+Label org.\+example.\+auxiliaryapilcationgui.\+Hello\+Controller.\+welcome\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+auxiliary\+Apilcation\+Gui/src/main/java/org/example/auxiliaryapilcationgui/\mbox{\hyperlink{auxiliary_apilcation_gui_2src_2main_2java_2org_2example_2auxiliaryapilcationgui_2_hello_controller_8java}{Hello\+Controller.\+java}}\end{DoxyCompactItemize}

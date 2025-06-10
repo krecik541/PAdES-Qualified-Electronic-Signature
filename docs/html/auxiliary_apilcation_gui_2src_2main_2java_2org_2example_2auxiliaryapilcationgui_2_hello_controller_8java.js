@@ -1,0 +1,4 @@
+var auxiliary_apilcation_gui_2src_2main_2java_2org_2example_2auxiliaryapilcationgui_2_hello_controller_8java =
+[
+    [ "org.example.auxiliaryapilcationgui.HelloController", "classorg_1_1example_1_1auxiliaryapilcationgui_1_1_hello_controller.html", "classorg_1_1example_1_1auxiliaryapilcationgui_1_1_hello_controller" ]
+];

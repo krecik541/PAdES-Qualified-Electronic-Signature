@@ -1,0 +1,99 @@
+\doxysection{org.\+example.\+auxiliaryapilcationgui.\+Key\+Generator Class Reference}
+\hypertarget{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_key_generator}{}\label{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_key_generator}\index{org.example.auxiliaryapilcationgui.KeyGenerator@{org.example.auxiliaryapilcationgui.KeyGenerator}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_key_generator_a06ee184e33eae2488f376d686a3c6774}{Key\+Generator}} (String \mbox{\hyperlink{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_key_generator_a9f78450655db2a467496994b71f59071}{pin}}, String \mbox{\hyperlink{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_key_generator_a631c74d13529a50b6d65550c6fd3038f}{path\+To\+Save}})
+\item 
+void \mbox{\hyperlink{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_key_generator_ab34e5b2d40ec58e6b97f522680f1c1a2}{init}} ()  throws Exception 
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_key_generator_a9fb152af82acf6f175e4c735122bbd6d}{save\+To\+File}} (String s, boolean pub)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+final String \mbox{\hyperlink{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_key_generator_a9f78450655db2a467496994b71f59071}{pin}}
+\item 
+final String \mbox{\hyperlink{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_key_generator_a631c74d13529a50b6d65550c6fd3038f}{path\+To\+Save}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_key_generator}{Key\+Generator} class is responsible for generating RSA key pairs and saving them securely. It encrypts the private key using a PIN and saves both the public and private keys to files. 
+
+\label{doc-constructors}
+\Hypertarget{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_key_generator_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_key_generator_a06ee184e33eae2488f376d686a3c6774}\index{org.example.auxiliaryapilcationgui.KeyGenerator@{org.example.auxiliaryapilcationgui.KeyGenerator}!KeyGenerator@{KeyGenerator}}
+\index{KeyGenerator@{KeyGenerator}!org.example.auxiliaryapilcationgui.KeyGenerator@{org.example.auxiliaryapilcationgui.KeyGenerator}}
+\doxysubsubsection{\texorpdfstring{KeyGenerator()}{KeyGenerator()}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_key_generator_a06ee184e33eae2488f376d686a3c6774} 
+org.\+example.\+auxiliaryapilcationgui.\+Key\+Generator.\+Key\+Generator (\begin{DoxyParamCaption}\item[{String}]{pin}{, }\item[{String}]{path\+To\+Save}{}\end{DoxyParamCaption})}
+
+Konstruktor klasy \doxylink{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_key_generator}{Key\+Generator}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin} & Hasło (PIN) używane do szyfrowania klucza prywatnego. \\
+\hline
+{\em path\+To\+Save} & Ścieżka do katalogu, w którym klucze będą zapisywane. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_key_generator_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_key_generator_ab34e5b2d40ec58e6b97f522680f1c1a2}\index{org.example.auxiliaryapilcationgui.KeyGenerator@{org.example.auxiliaryapilcationgui.KeyGenerator}!init@{init}}
+\index{init@{init}!org.example.auxiliaryapilcationgui.KeyGenerator@{org.example.auxiliaryapilcationgui.KeyGenerator}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_key_generator_ab34e5b2d40ec58e6b97f522680f1c1a2} 
+void org.\+example.\+auxiliaryapilcationgui.\+Key\+Generator.\+init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) throws Exception}
+
+Initializes the key generation process. Generates RSA key pairs, encrypts the private key, and saves both keys to files.
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & If an error occurs during key generation or encryption. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_key_generator_a9fb152af82acf6f175e4c735122bbd6d}\index{org.example.auxiliaryapilcationgui.KeyGenerator@{org.example.auxiliaryapilcationgui.KeyGenerator}!saveToFile@{saveToFile}}
+\index{saveToFile@{saveToFile}!org.example.auxiliaryapilcationgui.KeyGenerator@{org.example.auxiliaryapilcationgui.KeyGenerator}}
+\doxysubsubsection{\texorpdfstring{saveToFile()}{saveToFile()}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_key_generator_a9fb152af82acf6f175e4c735122bbd6d} 
+void org.\+example.\+auxiliaryapilcationgui.\+Key\+Generator.\+save\+To\+File (\begin{DoxyParamCaption}\item[{String}]{s}{, }\item[{boolean}]{pub}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Saves the given key string to a file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & The key string to save. \\
+\hline
+{\em pub} & Indicates whether the key is public or private. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-variable-members}
+\Hypertarget{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_key_generator_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_key_generator_a631c74d13529a50b6d65550c6fd3038f}\index{org.example.auxiliaryapilcationgui.KeyGenerator@{org.example.auxiliaryapilcationgui.KeyGenerator}!pathToSave@{pathToSave}}
+\index{pathToSave@{pathToSave}!org.example.auxiliaryapilcationgui.KeyGenerator@{org.example.auxiliaryapilcationgui.KeyGenerator}}
+\doxysubsubsection{\texorpdfstring{pathToSave}{pathToSave}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_key_generator_a631c74d13529a50b6d65550c6fd3038f} 
+final String org.\+example.\+auxiliaryapilcationgui.\+Key\+Generator.\+path\+To\+Save\hspace{0.3cm}{\ttfamily [private]}}
+
+The path where the keys will be saved. \Hypertarget{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_key_generator_a9f78450655db2a467496994b71f59071}\index{org.example.auxiliaryapilcationgui.KeyGenerator@{org.example.auxiliaryapilcationgui.KeyGenerator}!pin@{pin}}
+\index{pin@{pin}!org.example.auxiliaryapilcationgui.KeyGenerator@{org.example.auxiliaryapilcationgui.KeyGenerator}}
+\doxysubsubsection{\texorpdfstring{pin}{pin}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1auxiliaryapilcationgui_1_1_key_generator_a9f78450655db2a467496994b71f59071} 
+final String org.\+example.\+auxiliaryapilcationgui.\+Key\+Generator.\+pin\hspace{0.3cm}{\ttfamily [private]}}
+
+The PIN used for encrypting the private key. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+auxiliary\+Apilcation\+Gui/src/main/java/org/example/auxiliaryapilcationgui/\mbox{\hyperlink{_key_generator_8java}{Key\+Generator.\+java}}\end{DoxyCompactItemize}

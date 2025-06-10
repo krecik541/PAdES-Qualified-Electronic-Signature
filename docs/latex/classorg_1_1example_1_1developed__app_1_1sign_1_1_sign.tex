@@ -1,0 +1,195 @@
+\doxysection{org.\+example.\+developed\+\_\+app.\+sign.\+Sign Class Reference}
+\hypertarget{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign}{}\label{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign}\index{org.example.developed\_app.sign.Sign@{org.example.developed\_app.sign.Sign}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_ae62ee50b5dd57964e36683880a6b3504}{init}} ()  throws Exception 
+\item 
+boolean \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_a0a089b53de335efb77da79b6778961ea}{is\+Pendrive\+Recognized}} ()
+\item 
+void \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_a9af11e4b58529ea945fd2383c97d4ff2}{set\+Pendrive\+Recognized}} (boolean b)
+\item 
+String \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_a71f7f89233448150afbde3bbc23d38cc}{get\+Document\+Path}} ()
+\item 
+void \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_a48eef711559c2dd837fee1e70b8aab8d}{set\+Document\+Path}} (String \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_a3c9bf3417b7a9aa786854d0e1147091f}{document\+Path}})
+\item 
+void \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_afd0f9dd23505e4e0640b895904327f9b}{set\+Pin}} (String \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_aa6f789577db5a9bd8aa2e0c77478d6c5}{pin}})
+\item 
+String \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_a93131e6122a9aa55d42ffeedccb57426}{get\+Key\+Path}} ()
+\item 
+void \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_a323177060a66075b0107d30109a0698a}{set\+Key\+Path}} (String \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_a2f27b69fe594b4272622e29e890b86cc}{key\+Path}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static String \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_a765c264c1de74cd4d425bec3c8b28be8}{bytes\+To\+Hex}} (byte\mbox{[}$\,$\mbox{]} bytes)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+boolean \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_aeba6e54b093aaee5f312a22732d278a0}{is\+Pendrive\+Recognized}}
+\item 
+String \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_aa6f789577db5a9bd8aa2e0c77478d6c5}{pin}} = "{}"{}
+\item 
+String \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_a3c9bf3417b7a9aa786854d0e1147091f}{document\+Path}} = "{}"{}
+\item 
+String \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_a2f27b69fe594b4272622e29e890b86cc}{key\+Path}} = "{}"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The {\ttfamily \doxylink{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign}{Sign}} class is responsible for signing PDF documents using an encrypted private key and the SHA256with\+RSA algorithm. 
+
+\label{doc-func-members}
+\Hypertarget{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_a765c264c1de74cd4d425bec3c8b28be8}\index{org.example.developed\_app.sign.Sign@{org.example.developed\_app.sign.Sign}!bytesToHex@{bytesToHex}}
+\index{bytesToHex@{bytesToHex}!org.example.developed\_app.sign.Sign@{org.example.developed\_app.sign.Sign}}
+\doxysubsubsection{\texorpdfstring{bytesToHex()}{bytesToHex()}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_a765c264c1de74cd4d425bec3c8b28be8} 
+String org.\+example.\+developed\+\_\+app.\+sign.\+Sign.\+bytes\+To\+Hex (\begin{DoxyParamCaption}\item[{byte\mbox{[}$\,$\mbox{]}}]{bytes}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Converts a byte array to a hexadecimal string.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bytes} & The byte array to convert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Hexadecimal representation of the bytes. 
+\end{DoxyReturn}
+\Hypertarget{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_a71f7f89233448150afbde3bbc23d38cc}\index{org.example.developed\_app.sign.Sign@{org.example.developed\_app.sign.Sign}!getDocumentPath@{getDocumentPath}}
+\index{getDocumentPath@{getDocumentPath}!org.example.developed\_app.sign.Sign@{org.example.developed\_app.sign.Sign}}
+\doxysubsubsection{\texorpdfstring{getDocumentPath()}{getDocumentPath()}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_a71f7f89233448150afbde3bbc23d38cc} 
+String org.\+example.\+developed\+\_\+app.\+sign.\+Sign.\+get\+Document\+Path (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Gets the path to the PDF document.
+
+\begin{DoxyReturn}{Returns}
+Path to the document. 
+\end{DoxyReturn}
+\Hypertarget{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_a93131e6122a9aa55d42ffeedccb57426}\index{org.example.developed\_app.sign.Sign@{org.example.developed\_app.sign.Sign}!getKeyPath@{getKeyPath}}
+\index{getKeyPath@{getKeyPath}!org.example.developed\_app.sign.Sign@{org.example.developed\_app.sign.Sign}}
+\doxysubsubsection{\texorpdfstring{getKeyPath()}{getKeyPath()}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_a93131e6122a9aa55d42ffeedccb57426} 
+String org.\+example.\+developed\+\_\+app.\+sign.\+Sign.\+get\+Key\+Path (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Gets the path to the file containing the private key.
+
+\begin{DoxyReturn}{Returns}
+Path to the private key file. 
+\end{DoxyReturn}
+\Hypertarget{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_ae62ee50b5dd57964e36683880a6b3504}\index{org.example.developed\_app.sign.Sign@{org.example.developed\_app.sign.Sign}!init@{init}}
+\index{init@{init}!org.example.developed\_app.sign.Sign@{org.example.developed\_app.sign.Sign}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_ae62ee50b5dd57964e36683880a6b3504} 
+void org.\+example.\+developed\+\_\+app.\+sign.\+Sign.\+init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) throws Exception}
+
+Initializes the process of signing a PDF document.
+
+Loads the private key from an encrypted file, decrypts it using the PIN, calculates the hash of the PDF content, signs it, and saves the signature in the PDF metadata.
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & If an error occurs during decryption, signing, or saving the document. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_a0a089b53de335efb77da79b6778961ea}\index{org.example.developed\_app.sign.Sign@{org.example.developed\_app.sign.Sign}!isPendriveRecognized@{isPendriveRecognized}}
+\index{isPendriveRecognized@{isPendriveRecognized}!org.example.developed\_app.sign.Sign@{org.example.developed\_app.sign.Sign}}
+\doxysubsubsection{\texorpdfstring{isPendriveRecognized()}{isPendriveRecognized()}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_a0a089b53de335efb77da79b6778961ea} 
+boolean org.\+example.\+developed\+\_\+app.\+sign.\+Sign.\+is\+Pendrive\+Recognized (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Checks whether the USB drive has been recognized.
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if recognized, {\ttfamily false} otherwise. 
+\end{DoxyReturn}
+\Hypertarget{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_a48eef711559c2dd837fee1e70b8aab8d}\index{org.example.developed\_app.sign.Sign@{org.example.developed\_app.sign.Sign}!setDocumentPath@{setDocumentPath}}
+\index{setDocumentPath@{setDocumentPath}!org.example.developed\_app.sign.Sign@{org.example.developed\_app.sign.Sign}}
+\doxysubsubsection{\texorpdfstring{setDocumentPath()}{setDocumentPath()}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_a48eef711559c2dd837fee1e70b8aab8d} 
+void org.\+example.\+developed\+\_\+app.\+sign.\+Sign.\+set\+Document\+Path (\begin{DoxyParamCaption}\item[{String}]{document\+Path}{}\end{DoxyParamCaption})}
+
+Sets the path to the PDF document.
+
+
+\begin{DoxyParams}{Parameters}
+{\em document\+Path} & Path to the document. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_a323177060a66075b0107d30109a0698a}\index{org.example.developed\_app.sign.Sign@{org.example.developed\_app.sign.Sign}!setKeyPath@{setKeyPath}}
+\index{setKeyPath@{setKeyPath}!org.example.developed\_app.sign.Sign@{org.example.developed\_app.sign.Sign}}
+\doxysubsubsection{\texorpdfstring{setKeyPath()}{setKeyPath()}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_a323177060a66075b0107d30109a0698a} 
+void org.\+example.\+developed\+\_\+app.\+sign.\+Sign.\+set\+Key\+Path (\begin{DoxyParamCaption}\item[{String}]{key\+Path}{}\end{DoxyParamCaption})}
+
+Sets the path to the file containing the private key.
+
+
+\begin{DoxyParams}{Parameters}
+{\em key\+Path} & Path to the private key file. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_a9af11e4b58529ea945fd2383c97d4ff2}\index{org.example.developed\_app.sign.Sign@{org.example.developed\_app.sign.Sign}!setPendriveRecognized@{setPendriveRecognized}}
+\index{setPendriveRecognized@{setPendriveRecognized}!org.example.developed\_app.sign.Sign@{org.example.developed\_app.sign.Sign}}
+\doxysubsubsection{\texorpdfstring{setPendriveRecognized()}{setPendriveRecognized()}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_a9af11e4b58529ea945fd2383c97d4ff2} 
+void org.\+example.\+developed\+\_\+app.\+sign.\+Sign.\+set\+Pendrive\+Recognized (\begin{DoxyParamCaption}\item[{boolean}]{b}{}\end{DoxyParamCaption})}
+
+Sets the USB recognition status.
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Flag indicating USB recognition. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_afd0f9dd23505e4e0640b895904327f9b}\index{org.example.developed\_app.sign.Sign@{org.example.developed\_app.sign.Sign}!setPin@{setPin}}
+\index{setPin@{setPin}!org.example.developed\_app.sign.Sign@{org.example.developed\_app.sign.Sign}}
+\doxysubsubsection{\texorpdfstring{setPin()}{setPin()}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_afd0f9dd23505e4e0640b895904327f9b} 
+void org.\+example.\+developed\+\_\+app.\+sign.\+Sign.\+set\+Pin (\begin{DoxyParamCaption}\item[{String}]{pin}{}\end{DoxyParamCaption})}
+
+Sets the user PIN for decrypting the private key.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin} & PIN as a string. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-variable-members}
+\Hypertarget{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_a3c9bf3417b7a9aa786854d0e1147091f}\index{org.example.developed\_app.sign.Sign@{org.example.developed\_app.sign.Sign}!documentPath@{documentPath}}
+\index{documentPath@{documentPath}!org.example.developed\_app.sign.Sign@{org.example.developed\_app.sign.Sign}}
+\doxysubsubsection{\texorpdfstring{documentPath}{documentPath}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_a3c9bf3417b7a9aa786854d0e1147091f} 
+String org.\+example.\+developed\+\_\+app.\+sign.\+Sign.\+document\+Path = "{}"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+Path to the PDF document. \Hypertarget{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_aeba6e54b093aaee5f312a22732d278a0}\index{org.example.developed\_app.sign.Sign@{org.example.developed\_app.sign.Sign}!isPendriveRecognized@{isPendriveRecognized}}
+\index{isPendriveRecognized@{isPendriveRecognized}!org.example.developed\_app.sign.Sign@{org.example.developed\_app.sign.Sign}}
+\doxysubsubsection{\texorpdfstring{isPendriveRecognized}{isPendriveRecognized}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_aeba6e54b093aaee5f312a22732d278a0} 
+boolean org.\+example.\+developed\+\_\+app.\+sign.\+Sign.\+is\+Pendrive\+Recognized\hspace{0.3cm}{\ttfamily [private]}}
+
+Flag indicating whether the USB drive has been recognized. \Hypertarget{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_a2f27b69fe594b4272622e29e890b86cc}\index{org.example.developed\_app.sign.Sign@{org.example.developed\_app.sign.Sign}!keyPath@{keyPath}}
+\index{keyPath@{keyPath}!org.example.developed\_app.sign.Sign@{org.example.developed\_app.sign.Sign}}
+\doxysubsubsection{\texorpdfstring{keyPath}{keyPath}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_a2f27b69fe594b4272622e29e890b86cc} 
+String org.\+example.\+developed\+\_\+app.\+sign.\+Sign.\+key\+Path = "{}"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+Path to the file containing the private key. \Hypertarget{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_aa6f789577db5a9bd8aa2e0c77478d6c5}\index{org.example.developed\_app.sign.Sign@{org.example.developed\_app.sign.Sign}!pin@{pin}}
+\index{pin@{pin}!org.example.developed\_app.sign.Sign@{org.example.developed\_app.sign.Sign}}
+\doxysubsubsection{\texorpdfstring{pin}{pin}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign_aa6f789577db5a9bd8aa2e0c77478d6c5} 
+String org.\+example.\+developed\+\_\+app.\+sign.\+Sign.\+pin = "{}"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+User PIN for decrypting the private key. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Developed\+\_\+app\+\_\+folder/src/main/java/org/example/developed\+\_\+app/sign/\mbox{\hyperlink{_sign_8java}{Sign.\+java}}\end{DoxyCompactItemize}

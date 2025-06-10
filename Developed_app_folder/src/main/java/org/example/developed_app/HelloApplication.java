@@ -1,19 +1,27 @@
-package org.example.auxiliaryapilcationgui;
+package org.example.developed_app;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 
 /**
- * The HelloApplication class serves as the entry point for the JavaFX application.
- * It initializes the GUI and sets up the main stage for the RSA key generation tool.
+ * The `HelloApplication` class serves as the entry point for the JavaFX application.
+ * It initializes the GUI and sets up the main stage for the PDF signing and verification tool.
  */
 public class HelloApplication extends Application {
+
+    /**
+     * The main method launches the JavaFX application.
+     *
+     * @param args Command-line arguments passed to the application (unused).
+     */
+    public static void main(String[] args) {
+        launch();
+    }
+
     /**
      * Starts the JavaFX application by setting up the main stage and loading the FXML layout.
      *
@@ -22,21 +30,10 @@ public class HelloApplication extends Application {
      */
     @Override
     public void start(Stage stage) throws IOException {
-        HelloController.stage = stage;
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 290);
-
-        stage.setTitle("Generate RSA keys!");
+        Scene scene = new Scene(fxmlLoader.load(), 400, 320);
+        stage.setTitle("Sign/verify PDF");
         stage.setScene(scene);
         stage.show();
-    }
-
-    /**
-     * The main method launches the JavaFX application.
-     *
-     * @param args Command-line arguments passed to the application.
-     */
-    public static void main(String[] args) {
-        launch();
     }
 }

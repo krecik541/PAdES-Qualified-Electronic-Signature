@@ -1,0 +1,227 @@
+\doxysection{org.\+example.\+developed\+\_\+app.\+verify.\+Verify Class Reference}
+\hypertarget{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify}{}\label{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify}\index{org.example.developed\_app.verify.Verify@{org.example.developed\_app.verify.Verify}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_a8b45d2bc0ea9772fdca1f220215bc7e0}{init}} (Text correct\+Label, Text changed\+Label)  throws Exception 
+\item 
+String \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_a8b1d91b4821d5b25a663e9d48471b25d}{get\+Document\+Path}} ()
+\item 
+void \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_a224ea9ebc8bc6a0a0be8b1e09c85bea9}{set\+Document\+Path}} (String \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_aafd0ec66116e145e989aef8a8c4d1900}{document\+Path}})
+\item 
+String \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_a540da90ecb3f46817e54e93dceb37653}{get\+Key\+Path}} ()
+\item 
+void \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_a83f85530f90d24199995da090b18ebd8}{set\+Key\+Path}} (String \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_ad24bb0ae6a9f364275de36c7d42d6027}{key\+Path}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+byte\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_a306532ff456709b7d99bd7379807e369}{extract\+Signature\+From\+Metadata}} (PDDocument document)
+\item 
+byte\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_a0f5685bed1ac0dbae9778629c78bcd02}{compute\+SHA256}} (byte\mbox{[}$\,$\mbox{]} data)  throws No\+Such\+Algorithm\+Exception 
+\item 
+Public\+Key \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_ae6389e45e63974ebba61503e01748f00}{load\+Public\+Key}} ()  throws Exception 
+\item 
+boolean \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_a2969f114227af72d563a76217c9d4086}{verify\+Signature}} (byte\mbox{[}$\,$\mbox{]} hash, byte\mbox{[}$\,$\mbox{]} signature\+Bytes, Public\+Key public\+Key)  throws Exception 
+\item 
+byte\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_af83595a74d49ca55942a59e91f6d6aad}{hex\+To\+Bytes}} (String hex)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+String \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_aafd0ec66116e145e989aef8a8c4d1900}{document\+Path}}
+\item 
+String \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_ad24bb0ae6a9f364275de36c7d42d6027}{key\+Path}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The {\ttfamily \doxylink{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify}{Verify}} class enables verification of the integrity of a PDF document by comparing the digital signature stored in its metadata with the hash of its content. 
+
+\label{doc-func-members}
+\Hypertarget{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_a0f5685bed1ac0dbae9778629c78bcd02}\index{org.example.developed\_app.verify.Verify@{org.example.developed\_app.verify.Verify}!computeSHA256@{computeSHA256}}
+\index{computeSHA256@{computeSHA256}!org.example.developed\_app.verify.Verify@{org.example.developed\_app.verify.Verify}}
+\doxysubsubsection{\texorpdfstring{computeSHA256()}{computeSHA256()}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_a0f5685bed1ac0dbae9778629c78bcd02} 
+byte\mbox{[}$\,$\mbox{]} org.\+example.\+developed\+\_\+app.\+verify.\+Verify.\+compute\+SHA256 (\begin{DoxyParamCaption}\item[{byte\mbox{[}$\,$\mbox{]}}]{data}{}\end{DoxyParamCaption}) throws No\+Such\+Algorithm\+Exception\hspace{0.3cm}{\ttfamily [private]}}
+
+Computes the SHA-\/256 hash of the input data.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The data to hash. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A byte array containing the SHA-\/256 hash. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em No\+Such\+Algorithm\+Exception} & If the algorithm is not supported. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_a306532ff456709b7d99bd7379807e369}\index{org.example.developed\_app.verify.Verify@{org.example.developed\_app.verify.Verify}!extractSignatureFromMetadata@{extractSignatureFromMetadata}}
+\index{extractSignatureFromMetadata@{extractSignatureFromMetadata}!org.example.developed\_app.verify.Verify@{org.example.developed\_app.verify.Verify}}
+\doxysubsubsection{\texorpdfstring{extractSignatureFromMetadata()}{extractSignatureFromMetadata()}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_a306532ff456709b7d99bd7379807e369} 
+byte\mbox{[}$\,$\mbox{]} org.\+example.\+developed\+\_\+app.\+verify.\+Verify.\+extract\+Signature\+From\+Metadata (\begin{DoxyParamCaption}\item[{PDDocument}]{document}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Extracts the digital signature from the metadata of a PDF document.
+
+
+\begin{DoxyParams}{Parameters}
+{\em document} & The PDF document. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A byte array containing the signature, or {\ttfamily null} if not found. 
+\end{DoxyReturn}
+\Hypertarget{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_a8b1d91b4821d5b25a663e9d48471b25d}\index{org.example.developed\_app.verify.Verify@{org.example.developed\_app.verify.Verify}!getDocumentPath@{getDocumentPath}}
+\index{getDocumentPath@{getDocumentPath}!org.example.developed\_app.verify.Verify@{org.example.developed\_app.verify.Verify}}
+\doxysubsubsection{\texorpdfstring{getDocumentPath()}{getDocumentPath()}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_a8b1d91b4821d5b25a663e9d48471b25d} 
+String org.\+example.\+developed\+\_\+app.\+verify.\+Verify.\+get\+Document\+Path (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Gets the path to the PDF document.
+
+\begin{DoxyReturn}{Returns}
+The path to the document. 
+\end{DoxyReturn}
+\Hypertarget{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_a540da90ecb3f46817e54e93dceb37653}\index{org.example.developed\_app.verify.Verify@{org.example.developed\_app.verify.Verify}!getKeyPath@{getKeyPath}}
+\index{getKeyPath@{getKeyPath}!org.example.developed\_app.verify.Verify@{org.example.developed\_app.verify.Verify}}
+\doxysubsubsection{\texorpdfstring{getKeyPath()}{getKeyPath()}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_a540da90ecb3f46817e54e93dceb37653} 
+String org.\+example.\+developed\+\_\+app.\+verify.\+Verify.\+get\+Key\+Path (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Gets the path to the file containing the public key.
+
+\begin{DoxyReturn}{Returns}
+The path to the key file. 
+\end{DoxyReturn}
+\Hypertarget{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_af83595a74d49ca55942a59e91f6d6aad}\index{org.example.developed\_app.verify.Verify@{org.example.developed\_app.verify.Verify}!hexToBytes@{hexToBytes}}
+\index{hexToBytes@{hexToBytes}!org.example.developed\_app.verify.Verify@{org.example.developed\_app.verify.Verify}}
+\doxysubsubsection{\texorpdfstring{hexToBytes()}{hexToBytes()}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_af83595a74d49ca55942a59e91f6d6aad} 
+byte\mbox{[}$\,$\mbox{]} org.\+example.\+developed\+\_\+app.\+verify.\+Verify.\+hex\+To\+Bytes (\begin{DoxyParamCaption}\item[{String}]{hex}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Converts a hexadecimal string to a byte array.
+
+
+\begin{DoxyParams}{Parameters}
+{\em hex} & The hexadecimal string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A byte array. 
+\end{DoxyReturn}
+\Hypertarget{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_a8b45d2bc0ea9772fdca1f220215bc7e0}\index{org.example.developed\_app.verify.Verify@{org.example.developed\_app.verify.Verify}!init@{init}}
+\index{init@{init}!org.example.developed\_app.verify.Verify@{org.example.developed\_app.verify.Verify}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_a8b45d2bc0ea9772fdca1f220215bc7e0} 
+void org.\+example.\+developed\+\_\+app.\+verify.\+Verify.\+init (\begin{DoxyParamCaption}\item[{Text}]{correct\+Label}{, }\item[{Text}]{changed\+Label}{}\end{DoxyParamCaption}) throws Exception}
+
+Initializes the process of verifying the signature of a PDF document.
+
+
+\begin{DoxyParams}{Parameters}
+{\em correct\+Label} & Text displayed when the document is valid. \\
+\hline
+{\em changed\+Label} & Text displayed when the document has been modified. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & If an error occurs during file reading or signature verification. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_ae6389e45e63974ebba61503e01748f00}\index{org.example.developed\_app.verify.Verify@{org.example.developed\_app.verify.Verify}!loadPublicKey@{loadPublicKey}}
+\index{loadPublicKey@{loadPublicKey}!org.example.developed\_app.verify.Verify@{org.example.developed\_app.verify.Verify}}
+\doxysubsubsection{\texorpdfstring{loadPublicKey()}{loadPublicKey()}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_ae6389e45e63974ebba61503e01748f00} 
+Public\+Key org.\+example.\+developed\+\_\+app.\+verify.\+Verify.\+load\+Public\+Key (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) throws Exception\hspace{0.3cm}{\ttfamily [private]}}
+
+Loads the public key from a PEM file.
+
+\begin{DoxyReturn}{Returns}
+The {\ttfamily Public\+Key} object. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & If an error occurs during file reading or key parsing. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_a224ea9ebc8bc6a0a0be8b1e09c85bea9}\index{org.example.developed\_app.verify.Verify@{org.example.developed\_app.verify.Verify}!setDocumentPath@{setDocumentPath}}
+\index{setDocumentPath@{setDocumentPath}!org.example.developed\_app.verify.Verify@{org.example.developed\_app.verify.Verify}}
+\doxysubsubsection{\texorpdfstring{setDocumentPath()}{setDocumentPath()}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_a224ea9ebc8bc6a0a0be8b1e09c85bea9} 
+void org.\+example.\+developed\+\_\+app.\+verify.\+Verify.\+set\+Document\+Path (\begin{DoxyParamCaption}\item[{String}]{document\+Path}{}\end{DoxyParamCaption})}
+
+Sets the path to the PDF document.
+
+
+\begin{DoxyParams}{Parameters}
+{\em document\+Path} & The path to the document. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_a83f85530f90d24199995da090b18ebd8}\index{org.example.developed\_app.verify.Verify@{org.example.developed\_app.verify.Verify}!setKeyPath@{setKeyPath}}
+\index{setKeyPath@{setKeyPath}!org.example.developed\_app.verify.Verify@{org.example.developed\_app.verify.Verify}}
+\doxysubsubsection{\texorpdfstring{setKeyPath()}{setKeyPath()}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_a83f85530f90d24199995da090b18ebd8} 
+void org.\+example.\+developed\+\_\+app.\+verify.\+Verify.\+set\+Key\+Path (\begin{DoxyParamCaption}\item[{String}]{key\+Path}{}\end{DoxyParamCaption})}
+
+Sets the path to the file containing the public key.
+
+
+\begin{DoxyParams}{Parameters}
+{\em key\+Path} & The path to the key file. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_a2969f114227af72d563a76217c9d4086}\index{org.example.developed\_app.verify.Verify@{org.example.developed\_app.verify.Verify}!verifySignature@{verifySignature}}
+\index{verifySignature@{verifySignature}!org.example.developed\_app.verify.Verify@{org.example.developed\_app.verify.Verify}}
+\doxysubsubsection{\texorpdfstring{verifySignature()}{verifySignature()}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_a2969f114227af72d563a76217c9d4086} 
+boolean org.\+example.\+developed\+\_\+app.\+verify.\+Verify.\+verify\+Signature (\begin{DoxyParamCaption}\item[{byte\mbox{[}$\,$\mbox{]}}]{hash}{, }\item[{byte\mbox{[}$\,$\mbox{]}}]{signature\+Bytes}{, }\item[{Public\+Key}]{public\+Key}{}\end{DoxyParamCaption}) throws Exception\hspace{0.3cm}{\ttfamily [private]}}
+
+Verifies the digital signature using the hash and public key.
+
+
+\begin{DoxyParams}{Parameters}
+{\em hash} & The computed hash of the data. \\
+\hline
+{\em signature\+Bytes} & The signature to verify. \\
+\hline
+{\em public\+Key} & The public key. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if the signature is valid; otherwise, {\ttfamily false}. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & If an error occurs during verification. \\
+\hline
+\end{DoxyExceptions}
+
+
+\label{doc-variable-members}
+\Hypertarget{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_aafd0ec66116e145e989aef8a8c4d1900}\index{org.example.developed\_app.verify.Verify@{org.example.developed\_app.verify.Verify}!documentPath@{documentPath}}
+\index{documentPath@{documentPath}!org.example.developed\_app.verify.Verify@{org.example.developed\_app.verify.Verify}}
+\doxysubsubsection{\texorpdfstring{documentPath}{documentPath}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_aafd0ec66116e145e989aef8a8c4d1900} 
+String org.\+example.\+developed\+\_\+app.\+verify.\+Verify.\+document\+Path\hspace{0.3cm}{\ttfamily [private]}}
+
+Path to the PDF document to be verified. \Hypertarget{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_ad24bb0ae6a9f364275de36c7d42d6027}\index{org.example.developed\_app.verify.Verify@{org.example.developed\_app.verify.Verify}!keyPath@{keyPath}}
+\index{keyPath@{keyPath}!org.example.developed\_app.verify.Verify@{org.example.developed\_app.verify.Verify}}
+\doxysubsubsection{\texorpdfstring{keyPath}{keyPath}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1developed__app_1_1verify_1_1_verify_ad24bb0ae6a9f364275de36c7d42d6027} 
+String org.\+example.\+developed\+\_\+app.\+verify.\+Verify.\+key\+Path\hspace{0.3cm}{\ttfamily [private]}}
+
+Path to the file containing the public key. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Developed\+\_\+app\+\_\+folder/src/main/java/org/example/developed\+\_\+app/verify/\mbox{\hyperlink{_verify_8java}{Verify.\+java}}\end{DoxyCompactItemize}

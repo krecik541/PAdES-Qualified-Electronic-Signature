@@ -1,0 +1,60 @@
+\doxysection{org.\+example.\+developed\+\_\+app.\+sign.\+USBDetector Class Reference}
+\hypertarget{classorg_1_1example_1_1developed__app_1_1sign_1_1_u_s_b_detector}{}\label{classorg_1_1example_1_1developed__app_1_1sign_1_1_u_s_b_detector}\index{org.example.developed\_app.sign.USBDetector@{org.example.developed\_app.sign.USBDetector}}
+Inheritance diagram for org.\+example.\+developed\+\_\+app.\+sign.\+USBDetector\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classorg_1_1example_1_1developed__app_1_1sign_1_1_u_s_b_detector}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1sign_1_1_u_s_b_detector_ac34e31bb16022f7049fb1e9d07f74c3a}{run}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign}{Sign}} \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1sign_1_1_u_s_b_detector_a04d2aaac96379d671abb165c0d52e26a}{sign}}
+\item 
+\mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1_hello_controller}{Hello\+Controller}} \mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1sign_1_1_u_s_b_detector_acddc590cfa0ebb455692a4eb60f58888}{controller}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The {\ttfamily \doxylink{classorg_1_1example_1_1developed__app_1_1sign_1_1_u_s_b_detector}{USBDetector}} class implements {\ttfamily Runnable} and is responsible for monitoring the file system to detect the connection of a USB drive containing an encrypted private key file ({\ttfamily private.\+enc}). 
+
+\label{doc-func-members}
+\Hypertarget{classorg_1_1example_1_1developed__app_1_1sign_1_1_u_s_b_detector_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classorg_1_1example_1_1developed__app_1_1sign_1_1_u_s_b_detector_ac34e31bb16022f7049fb1e9d07f74c3a}\index{org.example.developed\_app.sign.USBDetector@{org.example.developed\_app.sign.USBDetector}!run@{run}}
+\index{run@{run}!org.example.developed\_app.sign.USBDetector@{org.example.developed\_app.sign.USBDetector}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1developed__app_1_1sign_1_1_u_s_b_detector_ac34e31bb16022f7049fb1e9d07f74c3a} 
+void org.\+example.\+developed\+\_\+app.\+sign.\+USBDetector.\+run (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Main loop for detecting USB devices.
+
+The loop runs every second, checking the list of available drives. If it finds a {\ttfamily private.\+enc} file on a removable drive, it marks the USB drive as recognized and sets the path to the key file.
+
+After each iteration, the {\ttfamily try\+To()} method of the controller is called in the Java\+FX thread context using {\ttfamily \doxylink{}{Platform\#run\+Later(\+Runnable)}}.
+
+\label{doc-variable-members}
+\Hypertarget{classorg_1_1example_1_1developed__app_1_1sign_1_1_u_s_b_detector_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classorg_1_1example_1_1developed__app_1_1sign_1_1_u_s_b_detector_acddc590cfa0ebb455692a4eb60f58888}\index{org.example.developed\_app.sign.USBDetector@{org.example.developed\_app.sign.USBDetector}!controller@{controller}}
+\index{controller@{controller}!org.example.developed\_app.sign.USBDetector@{org.example.developed\_app.sign.USBDetector}}
+\doxysubsubsection{\texorpdfstring{controller}{controller}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1developed__app_1_1sign_1_1_u_s_b_detector_acddc590cfa0ebb455692a4eb60f58888} 
+\mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1_hello_controller}{Hello\+Controller}} org.\+example.\+developed\+\_\+app.\+sign.\+USBDetector.\+controller}
+
+GUI controller for the application. \Hypertarget{classorg_1_1example_1_1developed__app_1_1sign_1_1_u_s_b_detector_a04d2aaac96379d671abb165c0d52e26a}\index{org.example.developed\_app.sign.USBDetector@{org.example.developed\_app.sign.USBDetector}!sign@{sign}}
+\index{sign@{sign}!org.example.developed\_app.sign.USBDetector@{org.example.developed\_app.sign.USBDetector}}
+\doxysubsubsection{\texorpdfstring{sign}{sign}}
+{\footnotesize\ttfamily \label{classorg_1_1example_1_1developed__app_1_1sign_1_1_u_s_b_detector_a04d2aaac96379d671abb165c0d52e26a} 
+\mbox{\hyperlink{classorg_1_1example_1_1developed__app_1_1sign_1_1_sign}{Sign}} org.\+example.\+developed\+\_\+app.\+sign.\+USBDetector.\+sign}
+
+Object responsible for signing PDF documents. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Developed\+\_\+app\+\_\+folder/src/main/java/org/example/developed\+\_\+app/sign/\mbox{\hyperlink{_u_s_b_detector_8java}{USBDetector.\+java}}\end{DoxyCompactItemize}

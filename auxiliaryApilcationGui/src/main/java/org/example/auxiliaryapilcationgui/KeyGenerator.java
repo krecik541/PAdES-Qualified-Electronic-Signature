@@ -11,15 +11,40 @@ import java.util.Base64;
 
 import static java.lang.Integer.min;
 
+/**
+ * The KeyGenerator class is responsible for generating RSA key pairs and saving them securely.
+ * It encrypts the private key using a PIN and saves both the public and private keys to files.
+ */
 public class KeyGenerator {
+
+    /**
+     * The PIN used for encrypting the private key.
+     */
     private final String pin;
+
+    /**
+     * The path where the keys will be saved.
+     */
     private final String pathToSave;
 
+
+    /**
+     * Konstruktor klasy KeyGenerator.
+     *
+     * @param pin        Hasło (PIN) używane do szyfrowania klucza prywatnego.
+     * @param pathToSave Ścieżka do katalogu, w którym klucze będą zapisywane.
+     */
     public KeyGenerator(String pin, String pathToSave) {
         this.pin = pin;
         this.pathToSave = pathToSave;
     }
 
+    /**
+     * Initializes the key generation process. Generates RSA key pairs, encrypts the private key,
+     * and saves both keys to files.
+     *
+     * @throws Exception If an error occurs during key generation or encryption.
+     */
     public void init() throws Exception {
         KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
         keyGen.initialize(4096);
@@ -43,6 +68,12 @@ public class KeyGenerator {
         saveToFile(Base64.getEncoder().encodeToString(encryptedPrivateKey), false);
     }
 
+    /**
+     * Saves the given key string to a file.
+     *
+     * @param s   The key string to save.
+     * @param pub Indicates whether the key is public or private.
+     */
     private void saveToFile(String s, boolean pub) {
         try {
             PrintWriter writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream(pathToSave + (pub ? "\\public.pem" : "\\private.enc"))));
