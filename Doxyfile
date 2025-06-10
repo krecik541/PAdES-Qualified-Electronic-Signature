@@ -1,0 +1,17 @@
+# Dodaj katalog ze źródłami Java:
+INPUT = src/org/example/developed_app/
+
+# Jeśli masz podkatalogi:
+RECURSIVE = YES
+
+# Aby analizował pliki .java:
+FILE_PATTERNS = *.java
+
+# Optymalizacja pod kod Java:
+OPTIMIZE_OUTPUT_JAVA = YES
+
+# Aby przetwarzał wszystkie publiczne i prywatne elementy:
+EXTRACT_ALL = YES
+
+# Aby obsługiwał styl komentarzy JavaDoc:
+JAVADOC_AUTOBRIEF = YES
