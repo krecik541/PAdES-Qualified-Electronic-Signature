@@ -5,8 +5,6 @@ import org.apache.pdfbox.text.PDFTextStripper;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
-import java.io.File;
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -19,31 +17,56 @@ import java.security.spec.PKCS8EncodedKeySpec;
 import java.util.Base64;
 import java.util.stream.Collectors;
 
-/*!
- * \class Sign
- * \brief Klasa odpowiedzialna za podpisywanie dokumentów PDF przy użyciu szyfrowanego klucza prywatnego.
+/**
+ * Klasa odpowiedzialna za podpisywanie dokumentów PDF
+ * przy użyciu zaszyfrowanego klucza prywatnego i algorytmu SHA256withRSA.
  */
 public class Sign {
 
-    /// Flaga wskazująca, czy pendrive został rozpoznany.
+    /**
+     * Flaga wskazująca, czy pendrive został rozpoznany.
+     */
     private boolean isPendriveRecognized;
 
-    /// PIN użytkownika do odszyfrowania klucza.
+    /**
+     * PIN użytkownika do odszyfrowania klucza.
+     */
     private String pin = "";
 
-    /// Ścieżka do dokumentu PDF.
+    /**
+     * Ścieżka do dokumentu PDF.
+     */
     private String documentPath = "";
 
-    /// Ścieżka do pliku z kluczem prywatnym.
+    /**
+     * Ścieżka do pliku z kluczem prywatnym.
+     */
     private String keyPath = "";
 
-    /*!
-     * \brief Inicjalizuje proces podpisywania dokumentu PDF.
+    /**
+     * Konwertuje tablicę bajtów na postać szesnastkową (hex).
      *
-     * Ładuje klucz prywatny z pliku (zaszyfrowany), odszyfrowuje go za pomocą PIN-u,
-     * oblicza hash dokumentu PDF, podpisuje hash i zapisuje podpis w metadanych PDF.
+     * @param bytes Tablica bajtów do konwersji.
+     * @return Reprezentacja szesnastkowa bajtów.
+     */
+    private static String bytesToHex(byte[] bytes) {
+        StringBuilder hexString = new StringBuilder();
+        for (byte b : bytes) {
+            String hex = Integer.toHexString(0xff & b);
+            if (hex.length() == 1) hexString.append('0');
+            hexString.append(hex);
+        }
+        return hexString.toString();
+    }
+
+    /**
+     * Inicjalizuje proces podpisywania dokumentu PDF.
      *
-     * \throws Exception w przypadku błędu odszyfrowania, podpisywania lub zapisu PDF.
+     * <p>Ładuje klucz prywatny z zaszyfrowanego pliku, odszyfrowuje go za pomocą PIN-u,
+     * oblicza hash zawartości PDF, podpisuje go, a następnie zapisuje podpis
+     * w metadanych dokumentu PDF.</p>
+     *
+     * @throws Exception w przypadku błędu podczas odszyfrowywania, podpisywania lub zapisu dokumentu.
      */
     public void init() throws Exception {
         String base64 = Files.lines(Paths.get(keyPath))
@@ -53,7 +76,7 @@ public class Sign {
         byte[] encryptedBytes = Base64.getDecoder().decode(base64);
 
         MessageDigest sha = MessageDigest.getInstance("SHA-256");
-        byte[] key = sha.digest(pin.getBytes("UTF-8"));
+        byte[] key = sha.digest(pin.getBytes(StandardCharsets.UTF_8));
         SecretKeySpec aesKey = new SecretKeySpec(key, "AES");
 
         Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
@@ -90,71 +113,63 @@ public class Sign {
         System.out.println("Podpis (hex): " + signatureHex);
     }
 
-    /*!
-     * \brief Konwertuje tablicę bajtów do postaci szesnastkowej.
-     * \param bytes Tablica bajtów.
-     * \return Ciąg znaków w formacie hex.
-     */
-    private static String bytesToHex(byte[] bytes) {
-        StringBuilder hexString = new StringBuilder();
-        for (byte b : bytes) {
-            String hex = Integer.toHexString(0xff & b);
-            if (hex.length() == 1) hexString.append('0');
-            hexString.append(hex);
-        }
-        return hexString.toString();
-    }
-
-    /*!
-     * \brief Sprawdza, czy pendrive został rozpoznany.
-     * \return true jeśli tak, false w przeciwnym razie.
+    /**
+     * Sprawdza, czy pendrive został rozpoznany.
+     *
+     * @return {@code true} jeśli tak, {@code false} w przeciwnym razie.
      */
     public boolean isPendriveRecognized() {
         return isPendriveRecognized;
     }
 
-    /*!
-     * \brief Ustawia status rozpoznania pendrive'a.
-     * \param b Flaga rozpoznania.
+    /**
+     * Ustawia status rozpoznania pendrive'a.
+     *
+     * @param b Flaga wskazująca rozpoznanie pendrive'a.
      */
     public void setPendriveRecognized(boolean b) {
         this.isPendriveRecognized = b;
     }
 
-    /*!
-     * \brief Zwraca ścieżkę do dokumentu PDF.
-     * \return Ścieżka dokumentu.
+    /**
+     * Zwraca ścieżkę do dokumentu PDF.
+     *
+     * @return Ścieżka dokumentu.
      */
     public String getDocumentPath() {
         return documentPath;
     }
 
-    /*!
-     * \brief Ustawia ścieżkę do dokumentu PDF.
-     * \param documentPath Ścieżka dokumentu.
+    /**
+     * Ustawia ścieżkę do dokumentu PDF.
+     *
+     * @param documentPath Ścieżka dokumentu.
      */
     public void setDocumentPath(String documentPath) {
         this.documentPath = documentPath;
     }
 
-    /*!
-     * \brief Ustawia PIN użytkownika.
-     * \param pin PIN jako ciąg znaków.
+    /**
+     * Ustawia PIN użytkownika, który służy do odszyfrowania klucza prywatnego.
+     *
+     * @param pin PIN jako ciąg znaków.
      */
     public void setPin(String pin) {
         this.pin = pin;
     }
 
-    /*!
-     * \brief Zwraca ścieżkę do pliku z kluczem prywatnym.
-     * \return Ścieżka do klucza.
+    /**
+     * Zwraca ścieżkę do pliku z kluczem prywatnym.
+     *
+     * @return Ścieżka do klucza.
      */
     public String getKeyPath() {
         return keyPath;
     }
 
-    /*!
-     * @brief Ustawia ścieżkę do pliku z kluczem prywatnym.
+    /**
+     * Ustawia ścieżkę do pliku z kluczem prywatnym.
+     *
      * @param keyPath Ścieżka do klucza.
      */
     public void setKeyPath(String keyPath) {

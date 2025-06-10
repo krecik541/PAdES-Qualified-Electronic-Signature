@@ -12,4 +12,6 @@ module org.example.developed_app {
     exports org.example.developed_app;
     exports org.example.developed_app.sign;
     opens org.example.developed_app.sign to javafx.fxml;
+    exports org.example.developed_app.verify;
+    opens org.example.developed_app.verify to javafx.fxml;
 }

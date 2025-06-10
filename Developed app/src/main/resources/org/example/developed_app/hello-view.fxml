@@ -8,8 +8,9 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" prefHeight="317.0" prefWidth="345.0" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="org.example.developed_app.HelloController">
+<VBox alignment="CENTER" prefHeight="317.0" prefWidth="345.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.developed_app.HelloController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -40,6 +41,8 @@
                         <Label layoutX="33.0" layoutY="29.0" text="Select signed document" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="30.0" />
                         <Label layoutX="30.0" layoutY="107.0" text="Select public key" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="105.0" />
                         <Button fx:id="verifyKeySelectButton" layoutX="30.0" layoutY="135.0" mnemonicParsing="false" onMouseClicked="#onVerifyKeySelectButtonClick" text="Select" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="135.0" />
+                        <Text fx:id="correctLabel" fill="#59ff00" layoutX="213.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Correct" visible="false" />
+                        <Text fx:id="changedLabel" fill="RED" layoutX="208.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Changed" visible="false" />
                      </children>
                   </AnchorPane>
             </content>
